@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<style>
+body
+{
+background-color:#efefef;
+width:100%;
+}
+p
+{
+margin:0px auto;
+width:600px;
+}
+input
+{
+	border:1px solid #ccc;
+	padding:10px;
+}
+</style>
+
+<body>
+
+<p>2017-07-18 00:30 <br />
+Click the button to start
+<br />
+<br/>
+<input type="button" value="||" onclick="stop();" >
+<input type="button" value=">"  onclick="start();" >
+<input type="button" value="reset"  onclick="reset();" >
+<br/>
+
+<br/>
+<img src="images/0030.jpg" id="imgId" style="width:100%;">
+</p>
+<script> 
+
+var img =  ["0030.jpg", "0130.jpg", "0230.jpg", "0330.jpg", "0430.jpg", "0530.jpg", "0630.jpg", "0730.jpg", "0830.jpg", "0930.jpg", "1030.jpg", "1130.jpg", "1230.jpg", "1330.jpg", "1430.jpg", "1530.jpg", "1630.jpg", "1730.jpg", "1830.jpg", "1930.jpg", "2030.jpg", "2130.jpg", "2230.jpg", "2330.jpg"];
+var init  = null;
+var i = 0;
+start();
+
+function start()
+{
+	clearInterval(init);
+	init = setInterval(function(){
+		if( i == 24)
+			i = 0;	
+		document.getElementById("imgId").src = "images/"+img[i];
+		i++;
+		}, 100);
+}   
+
+function reset()
+{
+	i = 0;
+	document.getElementById("imgId").src = "images/"+img[0];
+	stop();
+}
+
+function stop()
+{
+	clearInterval(init);
+}
+ 
+</script>
+
+</body>
+</html>
