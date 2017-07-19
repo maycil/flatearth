@@ -9,7 +9,7 @@ width:100%;
 p
 {
 margin:0px auto;
-width:600px;
+width:800px;
 }
 input
 {
@@ -21,7 +21,14 @@ input
 <body>
 
 <p> <br />
-Click the reset button to set <b>2017-07-18 00:30</b>
+<input type="button" value="2017-07-18"  onclick="setday('20170718');" > 
+<input type="button" value="March equinox"  onclick="setday('20170321');" > 
+<input type="button" value="June solstice"  onclick="setday('20170621');" > 
+<input type="button" value="September equinox"  onclick="setday('20170922');" > 
+<input type="button" value="December solstice"  onclick="setday('20171221');" > 
+<br />
+<br/>
+Click the start, stop and reset button to set time<br />
 <br />
 <br/>
 <input type="button" value="stop" onclick="stop();" >
@@ -32,7 +39,7 @@ Click the reset button to set <b>2017-07-18 00:30</b>
 <br/>
 
 <br/>
-<img src="images/0030.jpg" id="imgId" style="width:100%;">
+<img src="images/20170718/0030.jpg" id="imgId" style="width:100%;">
 </p>
 <script> 
 
@@ -40,23 +47,23 @@ var img =  ["0030.jpg", "0130.jpg", "0230.jpg", "0330.jpg", "0430.jpg", "0530.jp
 var init  = null;
 var i = 0;
 start();
-
+var day = "20170718"
 function start()
 {
 	clearInterval(init);
 	init = setInterval(function(){
 		if( i == 24)
 			i = 0;	
-		document.getElementById("imgId").src = "images/"+img[i];
+		document.getElementById("imgId").src = "images/"+ day +"/" + img[i];
 		i++;
-		document.getElementById("timeId").innerHTML = img[i].substring(0,2) + ":" + img[i].substring(2,4)
+		document.getElementById("timeId").innerHTML = day +" "+ img[i].substring(0,2) + ":" + img[i].substring(2,4)
 		}, 1000);
 }   
 
 function reset()
 {
 	i = 0;
-	document.getElementById("imgId").src = "images/"+img[0];
+	document.getElementById("imgId").src = "images/"+ day +"/" +img[0];
 	stop();
 }
 
@@ -65,6 +72,12 @@ function stop()
 	clearInterval(init);
 }
  
+function setday(dayValue)
+{
+	day = dayValue;
+	document.getElementById("timeId").innerHTML  =  day +" "+ img[i].substring(0,2) + ":" + img[i].substring(2,4)
+	reset();
+}
 </script>
 
 </body>
