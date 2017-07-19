@@ -27,6 +27,8 @@ Click the reset button to set <b>2017-07-18 00:30</b>
 <input type="button" value="stop" onclick="stop();" >
 <input type="button" value="start"  onclick="start();" >
 <input type="button" value="reset"  onclick="reset();" >
+
+<b>Greenwich Mean Time :</b> <span id="timeId"></span>
 <br/>
 
 <br/>
@@ -47,7 +49,8 @@ function start()
 			i = 0;	
 		document.getElementById("imgId").src = "images/"+img[i];
 		i++;
-		}, 250);
+		document.getElementById("timeId").innerHTML = img[i].substring(0,2) + ":" + img[i].substring(2,4)
+		}, 400);
 }   
 
 function reset()
